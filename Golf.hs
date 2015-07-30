@@ -20,3 +20,11 @@ everyNth n xs = everyNth' 1 n xs
     everyNth' cur n (x:xs)
       | cur == n  = x : everyNth' 1 n xs
       | otherwise = everyNth' (cur+1) n xs
+
+localMaxima :: [Integer] -> [Integer]
+localMaxima []     = []
+localMaxima [x]    = []
+localMaxima [x, y] = []
+localMaxima (x:y:z:zs)
+    | y > x && y > z = y : localMaxima (y:z:zs)
+    | otherwise      = localMaxima (y:z:zs)
